@@ -1,3 +1,4 @@
 **/__pycache__
 *.pyc
 venv
+oc-lettings-site copy.sqlite3
