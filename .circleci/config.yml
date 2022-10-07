@@ -1,20 +1,9 @@
 version: 2.1
 
-jobs:
-  lint_and_test:
-    steps:
-      - run:
-          name: lint
-          command: flake8
-      - run :
-          name: tests
-          command: pytest
-
 
 orbs:  
   heroku: circleci/heroku@0.0.10
 workflows:
   heroku_deploy:
     jobs:
-      - lint_and_test
       - heroku/deploy-via-git
