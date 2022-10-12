@@ -1,9 +1,35 @@
+jobs:
+  
+  # Build the docker image and deploy it to Heroku.
+  build_and_deploy:
+    docker:
+      - image: cimg/base:2021.07
+    steps:
+      # For using docker commands.
+      - setup_remote_docker:
+          version: 19.03.13
+
+      # Build the docker image
+      - checkout
+      - run: docker build .
+
+      # Deploy to Heroku
+      - heroku/install
+      - run: heroku container:login
+      - heroku/push-docker-image:
+          process-types: web
+      - heroku/release-docker-image:
+          process-types: web
+
+orbs:
+  # For using Heroku CLI commandｓ.
+  heroku: circleci/heroku@1.2.6
+
 version: 2.1
-
-
-orbs:  
-  heroku: circleci/heroku@0.0.10
 workflows:
   heroku_deploy:
     jobs:
-      - heroku/deploy-via-git
+      - build_and_deploy:
+          requires:
+            # Deploy after testing.
+            - build_and_test

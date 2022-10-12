@@ -75,3 +75,20 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+
+### Containerization, local execution and push image to Docker Hub 
+
+- docker build -t <img_name>
+- docker run -d -p 7999:7999 <img_name>
+- docker tag <img_name> <username/my-repo>
+- docker push <username/my-repo>
+
+### Deployment with Heroku
+
+- heroku container:login
+- heroku create <app_name>
+- heroku git:remote -a <app_name>
+- heroku container:push web -a <app_name>
+- heroku container:release web -a <app_name>
+- heroku open -a <app_name>
