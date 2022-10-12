@@ -17,7 +17,7 @@ jobs:
 
       # Deploy to Heroku
       - heroku/install
-      - run: heroku container:login
+      - run: heroku container:login -u="$DOCKER_USER" -p="$DOCKER_PASS"
       - run: heroku create oc-lettings-2476
       - run: heroku git:remote -a oc-lettings-2476
       - run: heroku container:push web -a oc-lettings-2476
