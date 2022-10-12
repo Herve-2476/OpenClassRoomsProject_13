@@ -1,4 +1,3 @@
-
 version: 2.1
 jobs:  
   # Build the docker image and deploy it to Heroku.
@@ -30,10 +29,10 @@ orbs:
 
 
 workflows:
-  version: 2 
   heroku_deploy:
     jobs:
       - build_and_deploy:
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only:
+                - master
