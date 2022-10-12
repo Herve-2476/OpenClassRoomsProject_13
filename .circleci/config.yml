@@ -10,7 +10,7 @@ jobs:
 
       # Build the docker image
       - checkout
-      - run: docker login -u="$DOCKER_USE" -p="$DOCKER_PASS"
+      - run: docker login
       - run: docker build -t oc-lettings-site .
       - run: docker tag oc-lettings-site rv2476/oc-lettings-site
       - run: docker push rv2476/oc-lettings-site
