@@ -79,6 +79,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 ### Containerization, local execution and push image to Docker Hub 
 
+- docker login
 - docker build -t <img_name> .
 - docker run -d -p 7999:7999 <img_name>
 - docker tag <img_name> <username/my-repo>
