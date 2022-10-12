@@ -10,7 +10,7 @@ jobs:
 
       # Build the docker image
       - checkout
-      - run: docker login
+      - run: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
       - run: docker build -t oc-lettings-site .
       - run: docker tag oc-lettings-site rv2476/oc-lettings-site
       - run: docker push rv2476/oc-lettings-site
