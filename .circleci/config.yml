@@ -1,5 +1,4 @@
-jobs:
-  
+jobs:  
   # Build the docker image and deploy it to Heroku.
   build_and_deploy:
     docker:
