@@ -11,15 +11,17 @@ jobs:
 
       # Build the docker image
       - checkout
-      - run: docker build .
+      - run: docker build -t oc-lettings-site .
+      - run: docker tag oc-lettings-site rv2476/oc-lettings-site
+      - run: docker push rv2476/oc-lettings-site
 
       # Deploy to Heroku
       - heroku/install
       - run: heroku container:login
-      - heroku/push-docker-image:
-          process-types: web
-      - heroku/release-docker-image:
-          process-types: web
+      - run: heroku create oc-lettings-2476
+      - run: heroku git:remote -a oc-lettings-2476
+      - run: heroku container: push web -a oc-lettings-2476
+      - run: heroku container: release web -a oc-lettings-2476
 
 orbs:
   # For using Heroku CLI commandｓ.
