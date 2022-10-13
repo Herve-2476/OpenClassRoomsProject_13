@@ -25,8 +25,8 @@ jobs:
       # Build the docker image
       - checkout
       - run: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-      - run: docker build -t oc-lettings-site .
-      - run: docker tag oc-lettings-site rv2476/oc-lettings-site
+      - run: docker build -t oc-lettings-site:$CIRCLE_SHA1 .
+      - run: docker tag oc-lettings-site rv2476/oc-lettings-site:$CIRCLE_SHA1
       - run: docker push rv2476/oc-lettings-site
 
       # Deploy to Heroku
@@ -49,6 +49,6 @@ workflows:
             filters:
               branches:
                 only:
-                  - branch_name
+                  - master
 
       
