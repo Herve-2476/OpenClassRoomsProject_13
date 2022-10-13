@@ -9,6 +9,8 @@ jobs:
       - run:
           name: "What branch am I on now?"
           command: echo $CIRCLE_BRANCH
+      - run:
+          name: "What is SHA_1?"    
           command: echo $CIRCLE_SHA1
 
   # Build the docker image and deploy it to Heroku.
