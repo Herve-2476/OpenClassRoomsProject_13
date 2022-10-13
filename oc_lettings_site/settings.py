@@ -126,3 +126,20 @@ STATIC_URL = "/static/"
 django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn="https://2061229685804f1cb6ddbb06186c69a1@o4503975783825408.ingest.sentry.io/4503975788085248",
+    integrations=[
+        DjangoIntegration(),
+    ],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True,
+)
