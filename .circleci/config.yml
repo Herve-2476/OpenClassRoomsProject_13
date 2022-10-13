@@ -40,9 +40,11 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      - try_rv:
+      
       - build_and_deploy:
           filters:
             branches:
               only:
                 - branch_name
+
+      - try_rv:
