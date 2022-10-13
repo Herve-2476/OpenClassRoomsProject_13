@@ -1,5 +1,14 @@
 version: 2.1
-jobs:  
+jobs:
+  # try
+  try:
+    steps:
+
+      - run: echo $CIRCLE_SHA1
+      - run:
+          name: "here the username"
+          command: echo $DOCKER_USER
+
   # Build the docker image and deploy it to Heroku.
   build_and_deploy:
     docker:
@@ -31,8 +40,9 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
+      - try:
       - build_and_deploy:
           filters:
             branches:
               only:
-                - master
+                - branch_name
