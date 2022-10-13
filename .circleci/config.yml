@@ -2,8 +2,8 @@ version: 2.1
 jobs:
   # try
   try_rv:
-    # docker:
-    #   - image: cimg/base:2021.07
+    docker:
+      - image: cimg/base:2021.07
     steps:
 
       - run:
