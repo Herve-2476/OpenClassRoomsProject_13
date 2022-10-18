@@ -16,7 +16,9 @@ jobs:
       - run:
           name: "Version de Python"
           command: python --version
-
+      - run:
+          name: "installation des dépendances"
+          command: pip install -r requirements.txt
       #- run: flake8
       - run: pytest
 
