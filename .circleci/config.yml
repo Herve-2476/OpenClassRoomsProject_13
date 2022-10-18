@@ -1,25 +1,13 @@
 version: 2.1
 jobs:
-  # try
-  lint_and_tests:
+  # installation of dependencies, Linter and tests
+  linter_and_tests:
     docker:
       - image: cimg/python:3.10.7
     steps:
       - checkout
-      - run:
-          name: "What branch am I on now?"
-          command: echo $CIRCLE_BRANCH
-      - run:
-          name: "What is SHA_1?"    
-          command: echo $CIRCLE_SHA1
-
-      - run:
-          name: "Version de Python"
-          command: python --version
-      - run:
-          name: "installation des dépendances"
-          command: pip install -r requirements.txt
-      #- run: flake8
+      - run: pip install -r requirements.txt
+      - run: flake8
       - run: pytest
 
   # Build the docker image and deploy it to Heroku.
