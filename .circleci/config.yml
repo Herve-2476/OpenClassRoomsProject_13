@@ -15,7 +15,7 @@ jobs:
 
       - run:
           name: "Version de Python"
-          commend: python --version
+          command: python --version
 
   # Build the docker image and deploy it to Heroku.
   build_and_deploy:
