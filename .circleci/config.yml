@@ -1,17 +1,21 @@
 version: 2.1
 jobs:
   # try
-  try_rv:
+  lint_and_tests:
     docker:
-      - image: cimg/base:2021.07
+      - image: cimg/python:3.10.7
     steps:
-
+      - checkout
       - run:
           name: "What branch am I on now?"
           command: echo $CIRCLE_BRANCH
       - run:
           name: "What is SHA_1?"    
           command: echo $CIRCLE_SHA1
+
+      - run:
+          name: "Version de Python"
+          commend: python --version
 
   # Build the docker image and deploy it to Heroku.
   build_and_deploy:
@@ -44,11 +48,11 @@ orbs:
 workflows:
   build:
       jobs:
-        - try_rv        
+        - lint_and_tests        
         - build_and_deploy:
             filters:
               branches:
                 only:
-                  - master
+                  - master_old
 
       
