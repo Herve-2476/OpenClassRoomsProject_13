@@ -17,6 +17,9 @@ jobs:
           name: "Version de Python"
           command: python --version
 
+      - run: flake8
+      - run: pytest
+
   # Build the docker image and deploy it to Heroku.
   build_and_deploy:
     docker:
