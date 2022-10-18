@@ -32,12 +32,16 @@ jobs:
     docker:
       - image: cimg/base:2021.07
     steps:
+      
+      - setup_remote_docker:
+          version: 19.03.13
 
       # Deploy to Heroku
+      - checkout
       - heroku/install
       #- run: docker login --username=$HEROKU_USER --password=$HEROKU_PASS registry.heroku.com
       #- run: heroku git:remote -a oc-lettings-2476
-      - run: heroku create
+      #- run: heroku create
       - run: heroku container:push web -a oc-lettings-2476
       - run: heroku container:release web -a oc-lettings-2476
 
