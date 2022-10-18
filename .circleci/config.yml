@@ -12,7 +12,7 @@ jobs:
       - run: pytest
 
   # Build the docker image and deploy it to Heroku.
-  build_and_deploy:
+  build_and_push:
     docker:
       - image: cimg/base:2021.07
     steps:
@@ -26,6 +26,12 @@ jobs:
       - run: docker build -t oc-lettings-site:$CIRCLE_SHA1 .
       - run: docker tag oc-lettings-site:$CIRCLE_SHA1 rv2476/oc-lettings-site:$CIRCLE_SHA1
       - run: docker push rv2476/oc-lettings-site:$CIRCLE_SHA1
+
+  #deploy to Heroku
+  deploy_to_heroku:
+    docker:
+      - image: cimg/base:2021.07
+    steps:
 
       # Deploy to Heroku
       - heroku/install
@@ -43,10 +49,16 @@ workflows:
   build:
       jobs:
         - linter_and_tests        
-        - build_and_deploy:
+        - build_and_push:
+            requires:
+              - linter_and_tests
             filters:
               branches:
                 only:
-                  - master_old
+                  - master
 
+        - deploy_to_heroku:
+            requires:
+              - build_and_push
+            
       

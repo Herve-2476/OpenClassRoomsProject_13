@@ -8,7 +8,4 @@ COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
 
-RUN pytest
-RUN flake8
-
 CMD python manage.py runserver 0.0.0.0:$PORT
