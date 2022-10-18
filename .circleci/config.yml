@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
 
-  # installation of dependencies, Linter and tests
+  
   linter_and_tests:
     docker:
       - image: cimg/python:3.10.7
