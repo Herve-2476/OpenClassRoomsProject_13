@@ -38,33 +38,30 @@ jobs:
 
       # Deploy to Heroku
       - checkout
-      - heroku/install
+      #- heroku/install
       - run: docker login --username=$HEROKU_USER --password=$HEROKU_TOKEN registry.heroku.com
-      #- run:heroku $HEROKU_PASS | docker login --username=_ registry.heroku.com --password-stdin
-      #- run: heroku git:remote -a oc-lettings-2476
-      #- run: heroku create
       - run: heroku container:push web -a oc-lettings-2476
       - run: heroku container:release web -a oc-lettings-2476
 
 orbs:
   # For using Heroku CLI commandｓ.
-  heroku: circleci/heroku@1.2.6
+  heroku: circleci/heroku@2.0.0
 
 
 workflows:
   build:
       jobs:
-        - linter_and_tests        
-        - build_and_push:
-            requires:
-              - linter_and_tests
-            filters:
-              branches:
-                only:
-                  - master
+        # - linter_and_tests        
+        # - build_and_push:
+        #     requires:
+        #       - linter_and_tests
+        #     filters:
+        #       branches:
+        #         only:
+        #           - master
 
-        - deploy_to_heroku:
-            requires:
-              - build_and_push
+        - deploy_to_heroku #:
+            # requires:
+            #   - build_and_push
             
       
