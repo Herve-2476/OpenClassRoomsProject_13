@@ -52,17 +52,17 @@ orbs:
 workflows:
   build:
       jobs:
-        # - linter_and_tests        
-        # - build_and_push:
-        #     requires:
-        #       - linter_and_tests
-        #     filters:
-        #       branches:
-        #         only:
-        #           - master
+        - linter_and_tests        
+        - build_and_push:
+            requires:
+              - linter_and_tests
+            filters:
+              branches:
+                only:
+                  - master
 
-        - deploy_to_heroku #:
-            # requires:
-            #   - build_and_push
+        # - deploy_to_heroku:
+        #     requires:
+        #       - build_and_push
             
       
