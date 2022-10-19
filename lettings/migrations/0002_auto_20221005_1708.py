@@ -29,4 +29,4 @@ class Migration(migrations.Migration):
         ("lettings", "0001_initial"),
     ]
 
-    operations = [migrations.RunPython(copy_tables)]
+    # operations = [migrations.RunPython(copy_tables)]

@@ -20,4 +20,4 @@ class Migration(migrations.Migration):
         ("profiles", "0001_initial"),
     ]
 
-    operations = [migrations.RunPython(copy_table)]
+    # operations = [migrations.RunPython(copy_table)]
