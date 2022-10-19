@@ -15,6 +15,9 @@ jobs:
   build_and_push:
     docker:
       - image: cimg/base:2021.07
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       # For using docker commands.
       - setup_remote_docker:
@@ -22,7 +25,7 @@ jobs:
 
       # Build the docker image
       - checkout
-      - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+      #- run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
       - run: docker build -t oc-lettings-site:$CIRCLE_SHA1 .
       - run: docker tag oc-lettings-site:$CIRCLE_SHA1 rv2476/oc-lettings-site:$CIRCLE_SHA1
       - run: docker push rv2476/oc-lettings-site:$CIRCLE_SHA1
