@@ -1,4 +1,18 @@
 version: 2.1
+
+commands:
+  docker_activation:
+    docker:
+      - image: cimg/base:2021.07
+    steps:
+      # For using docker commands.
+      - setup_remote_docker:
+          version: 19.03.13
+      - checkout
+    
+
+
+
 jobs:
 
   # installation of dependencies, Linter and tests
@@ -13,15 +27,18 @@ jobs:
 
   # Build the docker image and deploy it to Heroku.
   build_and_push:
-    docker:
-      - image: cimg/base:2021.07
-    steps:
-      # For using docker commands.
-      - setup_remote_docker:
-          version: 19.03.13
+    # docker:
+    #   - image: cimg/base:2021.07
+    # steps:
+    #   # For using docker commands.
+    #   - setup_remote_docker:
+    #       version: 19.03.13
+    #   - checkout
+
+    docker_activation:
 
       # Build the docker image
-      - checkout
+      
       - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
       - run: docker build -t oc-lettings-site:$CIRCLE_SHA1 .
       - run: docker tag oc-lettings-site:$CIRCLE_SHA1 rv2476/oc-lettings-site:$CIRCLE_SHA1
