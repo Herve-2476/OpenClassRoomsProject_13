@@ -132,8 +132,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 
 sentry_sdk.init(
-    dsn="""https://2061229685804f1cb6ddbb06186c69a1@o4503975783825408.
-    ingest.sentry.io/4503975788085248""",
+    dsn="""https://2061229685804f1cb6ddbb06186c69a1@o4503975783825408.ingest.sentry.io/4503975788085248""",
     integrations=[
         DjangoIntegration(),
     ],
