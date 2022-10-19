@@ -13,20 +13,17 @@ jobs:
       - run: flake8
       - run: pytest
 
-  # Build the docker image and deploy it to Heroku.
+  # Build the docker image
   build_and_push:
     docker:
       - image: cimg/base:2021.07
     steps:
-      # For using docker commands.
+      # For using docker commands
       - setup_remote_docker:
           version: 19.03.13
       - checkout
 
-    docker_activation:
-
-      # Build the docker image
-      
+      # Build the docker image      
       - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
       - run: docker build -t oc-lettings-site:$CIRCLE_SHA1 .
       - run: docker tag oc-lettings-site:$CIRCLE_SHA1 rv2476/oc-lettings-site:$CIRCLE_SHA1
@@ -37,7 +34,7 @@ jobs:
     docker:
       - image: cimg/base:2021.07
     steps:
-      # For using docker commands.
+      # For using docker commands
       - setup_remote_docker:
           version: 19.03.13
       - checkout
@@ -50,7 +47,7 @@ jobs:
       - run: heroku container:release web -a $HEROKU_APP_NAME
 
 orbs:
-  # For using Heroku CLI commandｓ.
+  # For using Heroku CLI commands
   heroku: circleci/heroku@2.0.0
 
 
