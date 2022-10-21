@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "oc_lettings_site",
     "lettings",
     "profiles",
 ]
@@ -135,3 +134,5 @@ ingest.sentry.io/4503975788085248""",
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True,
 )
+
+ADMINS = [("rv", "rv.monnier2476@gmail.com")]
