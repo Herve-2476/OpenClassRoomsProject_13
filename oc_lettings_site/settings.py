@@ -119,6 +119,8 @@ django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
+CSRF_TRUSTED_ORIGINS = ["https://oc-lettings-2476.herokuapp.com"]
+
 
 sentry_sdk.init(
     dsn="""https://2061229685804f1cb6ddbb06186c69a1@o4503975783825408.
@@ -134,5 +136,3 @@ ingest.sentry.io/4503975788085248""",
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True,
 )
-
-ADMINS = [("rv", "rv.monnier2476@gmail.com")]
