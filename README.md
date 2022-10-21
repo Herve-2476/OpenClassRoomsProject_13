@@ -18,7 +18,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 #### Cloner le repository
 
 - `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+- `git clone https://github.com/Herve-2476/OpenClassRoomsProject_13.git`
 
 #### Créer l'environnement virtuel
 
@@ -76,20 +76,38 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
 
+## Deployement
 
-### Containerization, local execution and push image to Docker Hub 
+The CI/CD pipeline that we are going to use will allow, after a local push to your github repository, to automatically perform various operations. First of all the linting and the tests. If these are valid, we build a Docker image that we push to Docker Hub. If the containerization went well we put the site in production on Heroku. Finally we will monitoring our application with Sentry.
 
-- docker login
-- docker build -t <img_name> .
-- docker run -d -p 7999:7999 <img_name>
-- docker tag <img_name> <username/my-repo>
-- docker push <username/my-repo>
+### Requirements
 
-### Deployment with Heroku
+- a Docker account
+- a CircleCi account
+- a Heroku account
+- a Sentry account
 
-- heroku container:login
-- heroku create <app_name>
-- heroku git:remote -a <app_name>
-- heroku container:push web -a <app_name>
-- heroku container:release web -a <app_name>
-- heroku open -a <app_name>
+### Configuration
+
+First of all you have to create a remote repository on your Github account of your local repository. Then go to your Heroku account and create a new app with the button `new`. You have to retrieve also your heroku token. You can do that via the CLI of Heroku (heroku login, heroku auth:token). Then go to your Circleci account and link it to your Github account. Follow your remote repository with the button `Set up project`. The important point now is to set the environment variables in Circleci. Select the button `Project Settings` and add the following environment variables.
+
+- DJANGO_SECRET_KEY = A valid django key, different from the one in the settings.py file
+- DOCKER_PASS = Your password of your Docker account
+- DOCKER_USER = Your username of your Docker account
+- HEROKU_API_KEY = You find this key on you Heroku account
+- HEROKU_APP_NAME = The name of the app you have created on your Heroku account
+- HEROKU_TOKEN = You retrieve it via the CLI of Heroku
+- HEROKU_USER = Your username of your Heroku account
+
+To use Sentry, go to your account and create a Django project. Copy the `dsn` and paste it in the settings.py file to replace mine. The Sentry dsn is not secret.
+
+### Running the pipeline
+Push a modification of your local repository to your remote repository and the pipeline runs automatically
+
+### Running the Docker image
+You can use the Docker image on your local machine. For that install Docker desktop app on your machine and retrieve the name and the tag of the image CircleCi created. Use the following command :
+
+- docker run -d -p 7999:7999 <image_name:tag>
+
+You can use website at : 127.0.0.1:7999
+
