@@ -117,4 +117,3 @@ You can use the Docker image on your local machine. For that install Docker desk
 - docker run -d -p 7999:7999 <image_name:tag>
 
 You can use website at : 127.0.0.1:7999
-
