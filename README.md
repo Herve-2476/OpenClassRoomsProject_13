@@ -89,9 +89,13 @@ The CI/CD pipeline that we are going to use will allow, after a local push to yo
 
 ### Configuration
 
-First of all you have to create a remote repository on your Github account of your local repository. Then go to your Heroku account and create a new app with the button `new`. You have to retrieve also your heroku token. You can do that via the CLI of Heroku (heroku login, heroku auth:token). Then go to your Circleci account and link it to your Github account. Follow your remote repository with the button `Set up project`. The important point now is to set the environment variables in Circleci. Select the button `Project Settings` and add the following environment variables.
+First of all you have to create a remote repository on your Github account of your local repository. Then go to your Heroku account and create a new app with the button `new`. You have to retrieve also your heroku token. You can do that via the CLI of Heroku (heroku login, heroku auth:token). Then go to your Circleci account and link it to your Github account. Follow your remote repository with the button `Set up project`.For the following you also need a valid django secret key, you can generate one with this command on the terminal :
+- python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 
-- DJANGO_SECRET_KEY = A valid django key, different from the one in the settings.py file
+The important point now is to set the environment variables in Circleci. Select the button `Project Settings` and add the following environment variables.
+
+
+- DJANGO_SECRET_KEY = A valid django secret key, different from the one in the settings.py file
 - DOCKER_PASS = Your password of your Docker account
 - DOCKER_USER = Your username of your Docker account
 - HEROKU_API_KEY = You find this key on you Heroku account
