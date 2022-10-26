@@ -104,6 +104,9 @@ To use Sentry, go to your account and create a Django project. Copy the `dsn` an
 ### Running the pipeline
 Push a modification of your local repository to your remote repository and the pipeline runs automatically
 
+### Link to the deployement Heroku
+ - https://oc-lettings-2476.herokuapp.com/
+
 ### Running the Docker image
 You can use the Docker image on your local machine. For that install Docker desktop app on your machine and retrieve the name and the tag of the image CircleCi created. Use the following command :
 
