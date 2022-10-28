@@ -22,7 +22,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 
 #### Créer l'environnement virtuel
 
-- `cd /path/to/Python-OC-Lettings-FR`
+- `cd /path/to/OpenClassRoomsProject_13`
 - `python -m venv venv`
 - `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
 - Activer l'environnement `source venv/bin/activate`
@@ -34,7 +34,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 
 #### Exécuter le site
 
-- `cd /path/to/Python-OC-Lettings-FR`
+- `cd /path/to/OpenClassRoomsProject_13`
 - `source venv/bin/activate`
 - `pip install --requirement requirements.txt`
 - `python manage.py runserver`
@@ -43,19 +43,19 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 
 #### Linting
 
-- `cd /path/to/Python-OC-Lettings-FR`
+- `cd /path/to/OpenClassRoomsProject_13`
 - `source venv/bin/activate`
 - `flake8`
 
 #### Tests unitaires
 
-- `cd /path/to/Python-OC-Lettings-FR`
+- `cd /path/to/OpenClassRoomsProject_13`
 - `source venv/bin/activate`
 - `pytest`
 
 #### Base de données
 
-- `cd /path/to/Python-OC-Lettings-FR`
+- `cd /path/to/OpenClassRoomsProject_13`
 - Ouvrir une session shell `sqlite3`
 - Se connecter à la base de données `.open oc-lettings-site.sqlite3`
 - Afficher les tables dans la base de données `.tables`
@@ -98,21 +98,21 @@ The important point now is to set the environment variables in Circleci. Select 
 - DJANGO_SECRET_KEY = A valid django secret key, different from the one in the settings.py file
 - DOCKER_PASS = Your password of your Docker account
 - DOCKER_USER = Your username of your Docker account
-- HEROKU_API_KEY = You find this key on you Heroku account
+- HEROKU_API_KEY = You find this key on your Heroku account
 - HEROKU_APP_NAME = The name of the app you have created on your Heroku account
-- HEROKU_TOKEN = You retrieve it via the CLI of Heroku
+- HEROKU_TOKEN = You retrieve it via the CLI of Heroku (it's not your password of your Heroku account)
 - HEROKU_USER = Your username of your Heroku account
 
 To use Sentry, go to your account and create a Django project. Copy the `dsn` and paste it in the settings.py file to replace mine. The Sentry dsn is not secret.
 
 ### Running the pipeline
-Push a modification of your local repository to your remote repository and the pipeline runs automatically
+Push a modification of your local repository to your remote repository and the pipeline runs automatically. If you are not on the master branch, only the linter and the tests will be executed.
 
 ### Link to the deployement Heroku
  - https://oc-lettings-2476.herokuapp.com/
 
 ### Running the Docker image
-You can use the Docker image on your local machine. For that install Docker desktop app on your machine and retrieve the name and the tag of the image CircleCi created. Use the following command :
+You can use the Docker image on your local machine. For that install Docker desktop app on your machine and retrieve the name and the tag of the image CircleCi created in Docker Hub. Use the following command :
 
 - docker run -d -p 7999:7999 <image_name:tag>
 
