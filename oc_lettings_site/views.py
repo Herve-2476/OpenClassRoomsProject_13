@@ -13,5 +13,4 @@ from oc_lettings_site.settings import SENTRY_DSN, SECRET_KEY
 
 
 def index(request):
-    ct = {"SENTRY_DSN": SENTRY_DSN, "SECRET_KEY": SECRET_KEY}
-    return render(request, "index.html", context=ct)
+    return render(request, "index.html")
