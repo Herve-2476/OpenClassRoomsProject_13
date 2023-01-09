@@ -2,3 +2,4 @@
 *.pyc
 venv
 oc-lettings-site copy.sqlite3
+.env
