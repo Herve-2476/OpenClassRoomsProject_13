@@ -10,7 +10,8 @@ from oc_lettings_site.settings import SENTRY_DSN, SECRET_KEY
 # Aliquam vitae erat ac orci placerat luctus.
 # Nullam elementum urna nisi, pellentesque iaculis enim cursus in.
 # Praesent volutpat porttitor magna, non finibus neque cursus id.
-def index(request):
 
+
+def index(request):
     ct = {"SENTRY_DSN": SENTRY_DSN, "SECRET_KEY": SECRET_KEY}
     return render(request, "index.html", context=ct)
