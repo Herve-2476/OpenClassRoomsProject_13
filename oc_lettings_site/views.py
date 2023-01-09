@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from oc_lettings_site.settings import SENTRY_DSN, SECRET_KEY
 
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 # Quisque molestie quam lobortis leo consectetur ullamcorper non id est.
@@ -10,4 +11,6 @@ from django.shortcuts import render
 # Nullam elementum urna nisi, pellentesque iaculis enim cursus in.
 # Praesent volutpat porttitor magna, non finibus neque cursus id.
 def index(request):
-    return render(request, "index.html")
+
+    ct = {"SENTRY_DSN": SENTRY_DSN, "SECRET_KEY": SECRET_KEY}
+    return render(request, "index.html", context=ct)
