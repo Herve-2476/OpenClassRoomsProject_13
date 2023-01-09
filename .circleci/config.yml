@@ -23,7 +23,7 @@ jobs:
 
       # Build the docker image      
       - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-      - run: docker build -t $DOCKER_USER/oc-lettings:$CIRCLE_SHA1 . --build-arg SENTRY_DSN="$SENTRY_DSN"
+      - run: docker build -t $DOCKER_USER/oc-lettings:$CIRCLE_SHA1 .
       - run: docker push $DOCKER_USER/oc-lettings:$CIRCLE_SHA1
 
   #deploy to Heroku
