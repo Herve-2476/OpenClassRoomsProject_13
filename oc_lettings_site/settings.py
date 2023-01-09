@@ -126,16 +126,16 @@ CSRF_TRUSTED_ORIGINS = ["https://oc-lettings-2476.herokuapp.com", "http://127.0.
 # ingest.sentry.io/4503975788085248"""
 SENTRY_DSN = os.environ.get("SENTRY_DSN", "BIZARRE")
 
-sentry_sdk.init(
-    dsn=SENTRY_DSN,
-    integrations=[
-        DjangoIntegration(),
-    ],
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0,
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True,
-)
+# sentry_sdk.init(
+#     dsn=SENTRY_DSN,
+#     integrations=[
+#         DjangoIntegration(),
+#     ],
+#     # Set traces_sample_rate to 1.0 to capture 100%
+#     # of transactions for performance monitoring.
+#     # We recommend adjusting this value in production.
+#     traces_sample_rate=1.0,
+#     # If you wish to associate users to errors (assuming you are using
+#     # django.contrib.auth) you may enable sending PII data.
+#     send_default_pii=True,
+# )
