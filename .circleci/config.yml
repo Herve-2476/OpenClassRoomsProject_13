@@ -14,8 +14,7 @@ jobs:
   # Build the docker image
   build_and_push:
     docker:
-      - image: cimg/base:2021.07
-    
+      - image: cimg/base:2021.07    
     steps:
       # For using docker commands
       - setup_remote_docker:
