@@ -124,7 +124,8 @@ CSRF_TRUSTED_ORIGINS = ["https://oc-lettings-2476.herokuapp.com", "http://127.0.
 
 # dsn = """https://2061229685804f1cb6ddbb06186c69a1@o4503975783825408.
 # ingest.sentry.io/4503975788085248"""
-SENTRY_DSN = os.environ.get("SENTRY_DSN", "")
+SENTRY_DSN = os.environ.get("SENTRY_DSN", "BIZARRE")
+
 sentry_sdk.init(
     dsn=SENTRY_DSN,
     integrations=[
