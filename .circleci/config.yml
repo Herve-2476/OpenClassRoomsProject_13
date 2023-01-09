@@ -18,7 +18,7 @@ jobs:
     steps:
       # For using docker commands
       - setup_remote_docker:
-          version: 19.03.13          
+          version: 19.03.13
       - checkout
 
       # Build the docker image      
