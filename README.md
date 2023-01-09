@@ -92,6 +92,8 @@ The CI/CD pipeline that we are going to use will allow, after a local push to yo
 First of all you have to create a remote repository on your Github account of your local repository. Then go to your Heroku account and create a new app with the button `new`. You have to retrieve also your heroku Api Key. You can do that via the CLI of Heroku (heroku login, heroku authorizations:create). Then go to your Circleci account and link it to your Github account. Follow your remote repository with the button `Set up project`.For the following you also need a valid django secret key, you can generate one with this command on the terminal :
 - python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 
+To use Sentry, go to your account and create a Django project.
+
 The important point now is to set the environment variables in Circleci. Select the button `Project Settings` and add the following environment variables.
 
 
@@ -101,8 +103,8 @@ The important point now is to set the environment variables in Circleci. Select 
 - HEROKU_API_KEY = Created via the CLI of Heroku (see above) 
 - HEROKU_APP_NAME = The name of the app you have created on your Heroku account
 - HEROKU_USER = Your username of your Heroku account
+- SENTRY_DSN = You retrieve it when you create your Django project
 
-To use Sentry, go to your account and create a Django project. Copy the `dsn` and paste it in the settings.py file to replace mine. The Sentry dsn is not secret.
 
 ### Running the pipeline
 Push a modification of your local repository to your remote repository and the pipeline runs automatically. If you are not on the master branch, only the linter and the tests will be executed.
