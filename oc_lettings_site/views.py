@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-from oc_lettings_site.settings import SENTRY_DSN, SECRET_KEY
-
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 # Quisque molestie quam lobortis leo consectetur ullamcorper non id est.
 # Praesent dictum, nulla eget feugiat sagittis, sem mi convallis eros,
