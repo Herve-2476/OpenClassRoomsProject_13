@@ -15,8 +15,8 @@ jobs:
   build_and_push:
     docker:
       - image: cimg/base:2021.07
-      - environment:
-         SENTRY_DSN: $SENTRY_DSN
+    environment:
+      SENTRY_DSN: $SENTRY_DSN
     steps:
       # For using docker commands
       - setup_remote_docker:
@@ -24,8 +24,7 @@ jobs:
       - checkout
 
       # Build the docker image      
-      - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-      
+      - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin      
       - run: docker build -t $DOCKER_USER/oc-lettings:$CIRCLE_SHA1 .
       - run: docker push $DOCKER_USER/oc-lettings:$CIRCLE_SHA1
 
